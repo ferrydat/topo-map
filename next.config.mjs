@@ -1,3 +1,8 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 let userConfig = undefined
 try {
   // try to import ESM first
@@ -26,7 +31,6 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
-    // Añadir optimización de paquetes para mejorar el rendimiento
     optimizePackageImports: ['leaflet', 'react-leaflet'],
   },
   // Habilitar source maps para facilitar la depuración en producción
@@ -38,6 +42,12 @@ const nextConfig = {
   
   // Necesario para exportación estática
   output: 'export',
+  
+  // Añadir configuración de webpack para resolver alias
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname);
+    return config;
+  },
 }
 
 if (userConfig) {
@@ -60,5 +70,6 @@ if (userConfig) {
 }
 
 export default nextConfig
+
 
 

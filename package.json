@@ -11,22 +11,23 @@
   },
   "dependencies": {
     "next": "^15.2.4",
-    "react": "^19",
-    "react-dom": "^19",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "lucide-react": "latest",
     "@radix-ui/react-dialog": "latest",
     "@radix-ui/react-tabs": "latest",
     "@radix-ui/react-select": "latest",
     "@radix-ui/react-switch": "latest",
     "@radix-ui/react-slider": "latest",
-    "@radix-ui/react-use-controllable-state": "^1.1.1"
+    "@radix-ui/react-use-controllable-state": "^1.1.1",
+    "date-fns": "2.30.0",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "4.2.1"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.4",
+    "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
-    "autoprefixer": "^10.4.16"
+    "tailwindcss": "^3.4.4"
   }
 }
-
-
 

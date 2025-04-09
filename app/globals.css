@@ -1,0 +1,444 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Fix for Leaflet marker icons */
+.leaflet-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.unit-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  z-index: 2000 !important;
+}
+
+/* Ensure the map container takes full height */
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1;
+}
+
+/* Make sure the map is visible */
+.leaflet-pane {
+  z-index: 1000 !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 1000 !important;
+}
+
+/* Fix map positioning */
+.leaflet-map-pane {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+/* Unit popup styling */
+.unit-popup .leaflet-popup-content {
+  margin: 8px !important;
+  min-width: 200px;
+}
+
+/* Unit label styling */
+.unit-label-container {
+  background: transparent !important;
+  border: none !important;
+  z-index: 2000 !important;
+}
+
+.unit-label {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 4px 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #3b82f6;
+  min-width: 120px;
+}
+
+.dark .unit-label {
+  background-color: rgba(30, 41, 59, 0.8);
+  color: #f8fafc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.unit-label-container.red .unit-label {
+  border-left-color: #ef4444;
+}
+
+.unit-label-container.green .unit-label {
+  border-left-color: #22c55e;
+}
+
+.unit-label-container.blue .unit-label {
+  border-left-color: #3b82f6;
+}
+
+.unit-label-name {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.unit-label-details {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Track marker styling */
+.track-marker-tooltip .leaflet-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  pointer-events: none;
+}
+
+.track-marker-tooltip .leaflet-tooltip-top:before {
+  display: none;
+}
+
+.track-marker-tooltip .leaflet-tooltip-content {
+  font-weight: bold;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo mejorado para los marcadores de tiempo */
+.time-marker-label {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  padding: 4px 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-left: 3px solid #3b82f6;
+  min-width: 60px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 2000 !important;
+  position: relative;
+}
+
+.dark .time-marker-label {
+  background-color: rgba(30, 41, 59, 0.9);
+  color: #f8fafc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  border-width: 3px;
+}
+
+/* Añadir estilos para unidades detectadas/no detectadas */
+.unit-icon.detected {
+  opacity: 1;
+}
+
+.unit-icon.undetected {
+  opacity: 0.6;
+  filter: grayscale(50%);
+}
+
+.unit-label.detected {
+  opacity: 1;
+}
+
+.unit-label.undetected {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Weather overlays */
+.weather-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 400;
+}
+
+.weather-overlay.clear {
+  /* No overlay for clear weather */
+}
+
+.weather-overlay.cloudy {
+  background-color: rgba(200, 200, 200, 0.2);
+}
+
+.weather-overlay.rain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cline x1='20' y1='10' x2='10' y2='30' stroke='%23aaaaaa' stroke-width='1' /%3E%3Cline x1='40' y1='30' x2='30' y2='50' stroke='%23aaaaaa' stroke-width='1' /%3E%3Cline x1='60' y1='50' x2='50' y2='70' stroke='%23aaaaaa' stroke-width='1' /%3E%3Cline x1='80' y1='70' x2='70' y2='90' stroke='%23aaaaaa' stroke-width='1' /%3E%3Cline x1='30' y1='20' x2='20' y2='40' stroke='%23aaaaaa' stroke-width='1' /%3E%3Cline x1='50' y1='40' x2='40' y2='60' stroke='%23aaaaaa' stroke-width='1' /%3E%3Cline x1='70' y1='60' x2='60' y2='80' stroke='%23aaaaaa' stroke-width='1' /%3E%3Cline x1='90' y1='80' x2='80' y2='100' stroke='%23aaaaaa' stroke-width='1' /%3E%3C/svg%3E");
+  background-color: rgba(100, 100, 100, 0.3);
+}
+
+.weather-overlay.storm {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cline x1='20' y1='10' x2='10' y2='30' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='40' y1='30' x2='30' y2='50' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='60' y1='50' x2='50' y2='70' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='80' y1='70' x2='70' y2='90  x2='50' y2='70' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='80' y1='70' x2='70' y2='90' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='30' y1='20' x2='20' y2='40' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='50' y1='40' x2='40' y2='60' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='70' y1='60' x2='60' y2='80' stroke='%23aaaaaa' stroke-width='2' /%3E%3Cline x1='90' y1='80' x2='80' y2='100' stroke='%23aaaaaa' stroke-width='2' /%3E%3C/svg%3E");
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+.weather-overlay.fog {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dark .weather-overlay.fog {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.weather-overlay.snow {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='1' fill='%23ffffff' /%3E%3Ccircle cx='40' cy='40' r='1' fill='%23ffffff' /%3E%3Ccircle cx='60' cy='60' r='1' fill='%23ffffff' /%3E%3Ccircle cx='80' cy='80' r='1' fill='%23ffffff' /%3E%3Ccircle cx='30' cy='10' r='1' fill='%23ffffff' /%3E%3Ccircle cx='50' cy='30' r='1' fill='%23ffffff' /%3E%3Ccircle cx='70' cy='50' r='1' fill='%23ffffff' /%3E%3Ccircle cx='90' cy='70' r='1' fill='%23ffffff' /%3E%3Ccircle cx='10' cy='30' r='1' fill='%23ffffff' /%3E%3Ccircle cx='30' cy='50' r='1' fill='%23ffffff' /%3E%3Ccircle cx='50' cy='70' r='1' fill='%23ffffff' /%3E%3Ccircle cx='70' cy='90' r='1' fill='%23ffffff' /%3E%3C/svg%3E");
+  background-color: rgba(200, 200, 200, 0.4);
+}
+
+/* Custom styling for the scale control */
+.leaflet-control-scale {
+  margin-bottom: 20px !important;
+  margin-right: 10px !important;
+}
+
+.leaflet-control-scale-line {
+  border: 2px solid rgba(0, 0, 0, 0.7) !important;
+  color: #000 !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: bold !important;
+  padding: 2px 5px !important;
+}
+
+.dark .leaflet-control-scale-line {
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  color: #fff !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Dark mode adjustments for map */
+.dark .leaflet-container {
+  filter: brightness(0.8) contrast(1.2);
+}
+
+.dark .leaflet-popup-content-wrapper {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.dark .leaflet-popup-tip {
+  background-color: #1e293b;
+}
+
+/* CMANO-inspired styles */
+.dark {
+  --cmano-blue-dark: #0a192f;
+  --cmano-blue-medium: #172a46;
+  --cmano-blue-light: #2a4365;
+  --cmano-accent: #38b2ac;
+  --cmano-highlight: #f6ad55;
+  --cmano-red: #e53e3e;
+  --cmano-green: #38a169;
+}
+
+/* CMANO-inspired header */
+.dark header {
+  background: linear-gradient(to bottom, var(--cmano-blue-dark), var(--cmano-blue-medium)) !important;
+  border-bottom: 1px solid var(--cmano-blue-light);
+}
+
+/* CMANO-inspired sidebar */
+.dark .bg-slate-900 {
+  background-color: var(--cmano-blue-medium) !important;
+  border-right: 1px solid var(--cmano-blue-light);
+}
+
+/* CMANO-inspired cards */
+.dark .card {
+  background-color: var(--cmano-blue-dark);
+  border: 1px solid var(--cmano-blue-light);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark .card-header {
+  background-color: var(--cmano-blue-medium);
+  border-bottom: 1px solid var(--cmano-blue-light);
+}
+
+/* CMANO-inspired buttons */
+.dark .btn-primary {
+  background-color: var(--cmano-blue-light);
+  border: 1px solid var(--cmano-accent);
+}
+
+.dark .btn-primary:hover {
+  background-color: var(--cmano-accent);
+}
+
+/* CMANO-inspired unit list */
+.dark .unit-list-item {
+  border-left: 3px solid var(--cmano-blue-light);
+  background-color: var(--cmano-blue-dark);
+  transition: all 0.2s ease;
+}
+
+.dark .unit-list-item:hover {
+  background-color: var(--cmano-blue-medium);
+  border-left-color: var(--cmano-accent);
+}
+
+.dark .unit-list-item.red {
+  border-left-color: var(--cmano-red);
+}
+
+.dark .unit-list-item.green {
+  border-left-color: var(--cmano-green);
+}
+
+.dark .unit-list-item.blue {
+  border-left-color: var(--cmano-accent);
+}
+
+/* Real-time progress bar */
+.real-time-progress {
+  height: 4px;
+  background-color: var(--cmano-blue-light);
+  transition: width 0.5s linear;
+}
+
+.dark .real-time-progress {
+  background-color: var(--cmano-accent);
+}
+
+/* Vista táctica */
+.tactical-view-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  z-index: 5; /* Valor bajo para que esté debajo de los elementos tácticos */
+  pointer-events: none; /* Permite que los clics pasen a través del overlay */
+}
+
+/* Asegurar que los elementos tácticos sean más visibles en modo táctico */
+.leaflet-marker-pane,
+.leaflet-overlay-pane,
+.leaflet-shadow-pane,
+.leaflet-tooltip-pane,
+.leaflet-popup-pane {
+  z-index: 2000 !important;
+}
+
+/* Asegurar que los marcadores de tiempo sean visibles en modo táctico */
+.tactical-view-overlay ~ .leaflet-container .time-marker-label {
+  background-color: rgba(30, 41, 59, 0.9);
+  color: #f8fafc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  border-width: 3px;
+  z-index: 3000 !important;
+}
+
+/* Aumentar la visibilidad de los elementos en modo táctico */
+.tactical-view-overlay ~ .leaflet-container .leaflet-marker-icon,
+.tactical-view-overlay ~ .leaflet-container .leaflet-marker-shadow,
+.tactical-view-overlay ~ .leaflet-container .leaflet-interactive {
+  filter: brightness(1.2) contrast(1.2);
+  z-index: 3000 !important;
+}
+
+/* Asegurar que los popups sean visibles en modo táctico */
+.tactical-view-overlay ~ .leaflet-container .leaflet-popup {
+  z-index: 4000 !important;
+}
+
+/* Mejorar la visibilidad de los controles en modo táctico */
+.tactical-view-overlay ~ .leaflet-container .leaflet-control {
+  z-index: 4000 !important;
+}
+
+/* Fog of War styles */
+.fog-of-war-active .unit-icon:not(.visible-faction),
+.fog-of-war-active .unit-label-container:not(.visible-faction) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.fog-of-war-active .unit-icon.visible-faction,
+.fog-of-war-active .unit-label-container.visible-faction {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+

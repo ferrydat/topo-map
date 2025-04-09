@@ -9,8 +9,14 @@
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint",
     "export": "next export"
+  },
+  "dependencies": {
+    "next": "^13.4.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
+
 
 
 

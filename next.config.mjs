@@ -31,6 +31,13 @@ const nextConfig = {
   },
   // Habilitar source maps para facilitar la depuración en producción
   productionBrowserSourceMaps: true,
+  
+  // Configuración para GitHub Pages
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  
+  // Necesario para exportación estática
+  output: 'export',
 }
 
 if (userConfig) {
@@ -53,4 +60,5 @@ if (userConfig) {
 }
 
 export default nextConfig
+
 
